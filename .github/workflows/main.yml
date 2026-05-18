@@ -1,0 +1,17 @@
+name: Build PDF
+
+on: [push]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Build Docker image
+        run: docker build -t resume .
+
+      - name: Run container
+        run: docker run -v ${{ github.workspace }}:/app resume
