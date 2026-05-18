@@ -8,5 +8,3 @@ pdflatex -interaction=nonstopmode sample.tex
 pdflatex -interaction=nonstopmode sample.tex
 
 echo "Build finished!"
-
-exit 1
