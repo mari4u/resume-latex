@@ -1,5 +1,6 @@
+#базовый образ
 FROM fedora:31
-
+#установка зависимостей для сборки 
 RUN yum -y update && yum install -y \
     texlive-collection-latexrecommended \
     texlive-collection-fontsrecommended \
@@ -12,11 +13,11 @@ RUN yum -y update && yum install -y \
     texlive-xetex \
     biber \
     && yum clean all
-
+#установка рабочей директории внутри контейнера
 WORKDIR /app
-
+#копирование всех файлов проекта в контейнер
 COPY . /app
-
+#дать права на выполнение скрипта сборки
 RUN chmod +x build.sh
-
+#команда которая запускается при старте контейнера
 CMD ["./build.sh"]
